@@ -5,6 +5,11 @@
   <li *ngFor="let event of events"> {{ event}} </li>
 </ul>
 
+<p> {{ title }}</p>
+<p> {{ title  | uppercase}}</p>
+<hr>
+{{pipeDemo | json}}
+
 <div *ngIf="show">
   <p>  Sneider Tamás János </p>
 </div>

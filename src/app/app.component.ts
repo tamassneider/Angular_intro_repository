@@ -13,6 +13,21 @@ export class AppComponent {
   whenclicked = false;
   inputContent: string;
 
+  pipeDemo = [
+    {
+      id: 1,
+      name: 'Jani'
+    },
+    {
+      id: 2,
+      name: 'Peti'
+    },
+    {
+      id: 3,
+      name: 'Pali'
+    }
+  ];
+
   toggle() {
     this.show = !this.show;
     this.inputContent = 'bla bla bla';
