@@ -2,8 +2,15 @@
 <app-event2></app-event2>
 
 <ul>
-  <li *ngFor="let event of events"> {{ event}} </li>
+  <li *ngFor="let event of clonedEvents"> {{ event}} </li>
 </ul>
+<button
+(click)="addEvent(inputEvent)"
+>+1</button>
+<input type="text" [(ngModel)]="inputEvent" >
+<button
+(click)="removeEvent(inputEvent)"
+>-1</button>
 
 <p> {{ title }}</p>
 <p> {{ title  | uppercase}}</p>

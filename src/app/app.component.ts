@@ -12,6 +12,8 @@ export class AppComponent {
   show = true;
   whenclicked = false;
   inputContent: string;
+  clonedEvents = [];
+  inputEvent: string;
 
   pipeDemo = [
     {
@@ -36,10 +38,20 @@ export class AppComponent {
   demo(ev: MouseEvent) {
     console.log(ev.screenX);
   }
+  addEvent(addedElem) {
+    this.clonedEvents.push(addedElem);
+    this.inputEvent = null;
+  }
+  removeEvent (removedEvent) {
+    removedEvent = this.clonedEvents.filter((param: string) => param !== this.inputEvent);
+    this.clonedEvents = removedEvent;
+    this.inputEvent = null;
+  }
 
   constructor() {
     console.log(this.tomb.filter((param: number) => param === 2));
     console.log(this.tomb.map((param: number) => param * 2));
     console.log(this.tomb.reduce((x, y) => x + y));
+    this.clonedEvents = this.events;
   }
 }
