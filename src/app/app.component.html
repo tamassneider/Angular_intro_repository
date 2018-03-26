@@ -1,3 +1,24 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <app-event2></app-event2>
 
+<ul>
+  <li *ngFor="let event of events"> {{ event}} </li>
+</ul>
+
+<div *ngIf="show">
+  <p>  Sneider Tamás János </p>
+</div>
+<div [ngClass]="{'valami': show}">
+  <p> ngClass demo</p>
+</div>
+
+<input type="text" [(ngModel)]="inputContent">
+<div>
+  {{inputContent}}
+</div>
+
+<button
+  (click)="toggle()"
+  (mouseover)="demo($event)"
+  [disabled]="whenclicked"
+> Toggle</button>
