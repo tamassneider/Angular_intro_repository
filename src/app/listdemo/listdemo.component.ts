@@ -8,6 +8,7 @@ import {EventModel} from './event-model';
 })
 export class ListdemoComponent implements OnInit {
   events: EventModel[];
+  modifyEvent: EventModel;
   constructor() {
     this.events = [
       {
@@ -27,14 +28,43 @@ export class ListdemoComponent implements OnInit {
       }
     ];
     console.log('listdemo module started');
+
+    this.modifyEvent = new EventModel('');
   }
-  add(newEventNameInput: HTMLInputElement, newEventPicInput: HTMLInputElement) {
-    // use spread operator and ternary operator
-    // ternary operator (logikai vizsgalat) ? haigaz : hahamis;
-    const maxId = this.events.reduce((x, y) => x.id > y.id ? x : y).id;
-    this.events = [...this.events, new EventModel(maxId + 1, newEventNameInput.value, newEventPicInput.value)];
-    newEventNameInput.value = '';
-    newEventPicInput.value = '';
+  save(newEventNameInput: HTMLInputElement, newEventPicInput: HTMLInputElement) {
+    if (this.modifyEvent.id === 0) {
+      // this is the code for creating new element
+      // use spread operator and ternary operator
+      // ternary operator (logikai vizsgalat) ? haigaz : hahamis;
+      const maxId = this.events.reduce((x, y) => x.id > y.id ? x : y).id;
+      this.events = [...this.events, new EventModel( newEventNameInput.value, maxId + 1, newEventPicInput.value)];
+    } else {
+      // this is the code for editing an existing item
+      this.events = this.events.map( (ev) => {
+        if (ev.id === this.modifyEvent.id) {
+          // we know that we want to modify this item
+          return {
+            id: ev.id,
+            name: newEventNameInput.value,
+            pic: newEventPicInput.value
+          };
+        } else {
+          // we know that we do not want to modify
+          return ev;
+        }
+      });
+      // create a new editor object
+      this.modifyEvent = new EventModel('');
+    }
+      newEventNameInput.value = '';
+      newEventPicInput.value = '';
+
+  }
+  edit(id: number) {
+    // IF this certainly exists
+    // If it is known that there is only one of this
+    this.modifyEvent = this.events.filter((ev) => ev.id === id)[0];
+    console.log(this.modifyEvent);
   }
 
   delete(id: number) {
