@@ -1,0 +1,26 @@
+<p>Start of listdemo</p>
+<hr>
+<ul>
+  <li *ngFor="let ev of events">
+    <img src="{{ev.pic}}" alt="" class="listPic">
+    {{ev.name}}
+  <button
+    (click)="delete(ev.id)">Remove</button>
+  </li>
+</ul>
+
+<label for="eventname">Esemény neve</label>
+<input type="text" #newEventNameInput id="eventname">
+<label for="eventpic"> Esemény képe</label>
+<input type="text" #newEventPicInput id="eventpic">
+<button
+  (click)="add(newEventNameInput, newEventPicInput)">Save</button>
+
+
+<pre>
+  {{events | json}}
+</pre>
+
+<hr>
+<p>End of listdemo</p>
+<hr>

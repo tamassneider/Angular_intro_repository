@@ -49,9 +49,9 @@ export class AppComponent {
   }
 
   constructor() {
-    console.log(this.tomb.filter((param: number) => param === 2));
+    /*console.log(this.tomb.filter((param: number) => param === 2));
     console.log(this.tomb.map((param: number) => param * 2));
     console.log(this.tomb.reduce((x, y) => x + y));
-    this.clonedEvents = this.events;
+    this.clonedEvents = this.events; */
   }
 }
