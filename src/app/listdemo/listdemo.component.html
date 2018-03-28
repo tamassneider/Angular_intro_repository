@@ -3,7 +3,7 @@
 <ul>
   <li *ngFor="let ev of events">
     <img src="{{ev.pic}}" alt="" class="listPic">
-    {{ev.name}}
+    {{ev.name | myPipe: 3}}
     <button
     (click)="edit(ev.id)">Edit </button>
     <button

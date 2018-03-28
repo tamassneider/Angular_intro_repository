@@ -7,13 +7,15 @@ import { EventComponent } from './event/event.component';
 import {Event2Component} from './event_created_manually/event2.component';
 import {FormsModule} from '@angular/forms';
 import { ListdemoComponent } from './listdemo/listdemo.component';
+import { MyPipePipe } from './my-pipe.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     EventComponent,
     Event2Component,
-    ListdemoComponent
+    ListdemoComponent,
+    MyPipePipe
   ],
   imports: [
     BrowserModule,
