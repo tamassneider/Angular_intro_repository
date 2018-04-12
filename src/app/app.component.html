@@ -1,36 +1,48 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<app-listdemo></app-listdemo>
+<button (click)="hook=!hook"> Lifecycle hook demo</button>
+<button (click)="changeInputTestData()"> new test data: time</button>
+<button (click)="changeInputTestData2()"> new test data: date</button>
 
-<ul>
-  <li *ngFor="let event of clonedEvents"> {{ event}} </li>
-</ul>
-<button
-(click)="addEvent(inputEvent)"
->+1</button>
-<input type="text" [(ngModel)]="inputEvent" >
-<button
-(click)="removeEvent(inputEvent)"
->-1</button>
+<ng-container *ngIf="hook; else previous">
+<app-test [testData]="testData" [testData2]="testData2"></app-test>
+</ng-container>
 
-<p> {{ title }}</p>
-<p> {{ title  | uppercase}}</p>
-<hr>
-{{pipeDemo | json}}
+<ng-template #previous>
+  <app-listdemo></app-listdemo>
 
-<div *ngIf="show">
-  <p>  Sneider Tamás János </p>
-</div>
-<div [ngClass]="{'valami': show}">
-  <p> ngClass demo</p>
-</div>
+  <ul>
+    <li *ngFor="let event of clonedEvents"> {{ event}} </li>
+  </ul>
+  <button
+    (click)="addEvent(inputEvent)"
+  >+1</button>
+  <input type="text" [(ngModel)]="inputEvent" >
+  <button
+    (click)="removeEvent(inputEvent)"
+  >-1</button>
 
-<input type="text" [(ngModel)]="inputContent">
-<div>
-  {{inputContent}}
-</div>
+  <p> {{ title }}</p>
+  <p> {{ title  | uppercase}}</p>
+  <hr>
+  {{pipeDemo | json}}
 
-<button
-  (click)="toggle()"
-  (mouseover)="demo($event)"
-  [disabled]="whenclicked"
-> Toggle</button>
+  <div *ngIf="show">
+    <p>  Sneider Tamás János </p>
+  </div>
+  <div [ngClass]="{'valami': show}">
+    <p> ngClass demo</p>
+  </div>
+
+  <input type="text" [(ngModel)]="inputContent">
+  <div>
+    {{inputContent}}
+  </div>
+
+  <button
+    (click)="toggle()"
+    (mouseover)="demo($event)"
+    [disabled]="whenclicked"
+  > Toggle</button>
+</ng-template>
+
+

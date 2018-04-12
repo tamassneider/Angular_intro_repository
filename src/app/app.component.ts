@@ -1,11 +1,21 @@
-import { Component } from '@angular/core';
+import {
+  AfterContentChecked,
+  AfterContentInit,
+  AfterViewChecked,
+  AfterViewInit,
+  Component,
+  DoCheck, OnChanges, OnDestroy,
+  OnInit,
+  SimpleChanges
+} from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit, OnDestroy, DoCheck, OnChanges,
+  AfterViewInit, AfterViewChecked, AfterContentInit, AfterContentChecked{
   title = 'netacademia123';
   tomb = [1, 2, 3, 4, 5, 6, 7];
   events = ['sziget', 'effott', 'volt' ];
@@ -14,6 +24,10 @@ export class AppComponent {
   inputContent: string;
   clonedEvents = [];
   inputEvent: string;
+  hook = false;
+  testData = new Date().toTimeString();
+  testData2 = new Date().toDateString()
+
 
   pipeDemo = [
     {
@@ -49,9 +63,43 @@ export class AppComponent {
   }
 
   constructor() {
-    /*console.log(this.tomb.filter((param: number) => param === 2));
-    console.log(this.tomb.map((param: number) => param * 2));
-    console.log(this.tomb.reduce((x, y) => x + y));
-    this.clonedEvents = this.events; */
+    console.log('app constructor');
+  }
+
+  ngOnInit () {
+    console.log('app OnInit');
+  }
+  ngOnChanges(changes: SimpleChanges) {
+    console.log('app OnChanges: ', changes, this.testData,  this.testData2);
+  }
+
+  ngDoCheck() {
+    console.log('app DoCheck: ', this.testData,  this.testData2);
+  }
+
+  ngOnDestroy() {
+    console.log('app OnDestroy', this.testData,  this.testData2);
+  }
+  ngAfterViewInit() {
+    console.log('app AfterViewInit');
+  }
+
+  ngAfterViewChecked () {
+    console.log('app AfterViewChecked');
+  }
+
+  ngAfterContentInit() {
+    console.log('app AfterContentInit');
+  }
+
+  ngAfterContentChecked(){
+    console.log('app AfterContentChecked');
+  }
+
+  changeInputTestData() {
+    this.testData = new Date().toTimeString();
+  }
+  changeInputTestData2() {
+    this.testData2 = new Date().toDateString();
   }
 }

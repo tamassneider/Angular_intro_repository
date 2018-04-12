@@ -27,7 +27,6 @@ export class ListdemoComponent implements OnInit {
         pic: 'https://tixa.hu/kepek/0004/4101-1.jpg'
       }
     ];
-    console.log('listdemo module started');
 
     this.modifyEvent = new EventModel('');
   }
